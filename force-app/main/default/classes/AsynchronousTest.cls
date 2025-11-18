@@ -41,9 +41,15 @@ public with sharing class AsynchronousTest {
         }
         insert testOpps;
 
+        Set<Id> accountIds = new Set<Id>();
+        Set<Id> OppIds = new Set<Id>();
+        for (Account a : testAccounts)
+        {AccountIds.add(a.id);}
+        for(Opportunity o : testOpps)
+        {OppIds.add(o.id);}
         // Call the method to test between the startTest and stopTest methods
         Test.startTest();
-        //YOUR CODE HERE
+        NextStepFuture.updateNextSteps(accountIds);
         Test.stopTest();
 
         // Query the updated accounts and opportunities
